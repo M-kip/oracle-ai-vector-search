@@ -4,7 +4,7 @@ Note-taking repository for Oracle AI Vector Search Professional exam (1Z0-184-25
 
 ## Oracle Database 23ai: Vector Search Fundamentals
 
-Work in progress...
+- [Oracle AI Vector Search](./docs/vector_search.md)
 
 ## Oracle Database 23ai: Vector Search Deep Dive
 
