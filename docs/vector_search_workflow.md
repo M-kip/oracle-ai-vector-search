@@ -34,6 +34,6 @@ Create vector indexes in the event that you have huge vector spaces.
 
 Native SQL operations to combine similarity searches with relational searches in order to retrieve relevant data.
 
-## Step 5 - Call to LLM on Cloud for Complete RAG Inference (Optional)
+## Step 5 - Call to LLM for Complete RAG Inference (Optional)
 
 Use the similarity search results to generate a prompt and send it to your generative LLM in order to complete your RAG pipeline.
