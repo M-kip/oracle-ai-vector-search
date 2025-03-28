@@ -27,3 +27,16 @@ Similarity searches tend to get data from one or more clusters, depending on the
 *Example. The distance between dog and wolf in the vector space is shorter than the distance between dog and kitten. So in this space, a dog is more similar to a wolf than it is to a kitten.*
 
 ![Similarity Search](../imgs/similarity_search.png)
+
+## Vector Embeddings Models
+
+Vector Embedding Models allow you to **assign meaning** to a word, or a sentence, or the pixels in an image, or perhaps audio. They allows you to **quantify features or dimensions**.
+
+Most modern vector embeddings use a **transformer model**. Depending on the type of your data, you can use different pre-trained open source models to create vector embeddings. Each model determines the number of dimensions for your vectors.
+
+For example:
+- Sentence Transformers for textual data
+- Residual Network (ResNet) for visual data
+- Visual Spectrogram Representation for audio data
+
+![Vector Embeddings Models](../imgs/vector_embedding_models.png)
