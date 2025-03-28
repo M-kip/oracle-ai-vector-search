@@ -32,7 +32,7 @@ Similarity searches tend to get data from one or more clusters, depending on the
 
 Vector Embedding Models allow you to **assign meaning** to a word, or a sentence, or the pixels in an image, or perhaps audio. They allows you to **quantify features or dimensions**.
 
-Most modern vector embeddings use a **transformer model**. Depending on the type of your data, you can use different pre-trained open source models to create vector embeddings. Each model determines the number of dimensions for your vectors.
+Most modern vector embeddings use a **transformer model**. Depending on the type of your data, you can use different pre-trained open source models to create vector embeddings. Each model determines **the number of dimensions for your vectors**.
 
 For example:
 - Sentence Transformers for textual data
