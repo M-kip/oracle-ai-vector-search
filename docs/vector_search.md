@@ -40,3 +40,13 @@ For example:
 - Visual Spectrogram Representation for audio data
 
 ![Vector Embeddings Models](../imgs/vector_embedding_models.png)
+
+## Import Embedding Models
+
+Two approaches to generate vector embeddings:
+- Outside the Oracle DB
+- Within the Oracle DB (ONNX)
+
+In order to use pre-trained open source embeddings models (or your own embedding models) within the Oracle DB, you need to use models that are compatible with the **Open Neural Network Exchange Standard (ONNX)**, also known as Onyx.
+
+Oracle Database implements an Onyx runtime directly within the database, and this is going to allow you to generate vector embeddings directly inside the Oracle Database using SQL. 
