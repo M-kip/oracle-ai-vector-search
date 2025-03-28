@@ -1,5 +1,7 @@
 # Oracle AI Vector Search Workflow
 
+![Vector Search Workflow](../imgs/vector_search_workflow.png)
+
 ## Step 1 - Generate Vector Embeddings
 
 Load the ONNX model called ```my_embedding_model``` into the Oracle Database.
@@ -22,9 +24,16 @@ SELECT TO_VECTOR(VECTOR_EMBEDDING(doc_model USING 'hello' as data)) as embedding
 
 Create one or more columns of ```vector``` data type.
 
-## Step 3 - Create Vector Indexes
+## Step 3 - Create Vector Indexes (Optional)
 
-Craete vector indexes in the event that you have huge vector spaces.
+Create vector indexes in the event that you have huge vector spaces.
 
-**Note.** This is an optional step, but this is beneficial for running similarity searches over those huge vector spaces.
+**Note.** *This is an optional step, but this is beneficial for running similarity searches over those huge vector spaces.*
 
+## Step 4 - Combine Similirarity and Keyword Searches
+
+Native SQL operations to combine similarity searches with relational searches in order to retrieve relevant data.
+
+## Step 5 - Call to LLM on Cloud for Complete RAG Inference (Optional)
+
+Use the similarity search results to generate a prompt and send it to your generative LLM in order to complete your RAG pipeline.
