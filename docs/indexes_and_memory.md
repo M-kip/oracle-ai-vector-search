@@ -44,6 +44,8 @@ Oracle AI Vector Search supports vectors with up to 65,535 dimensions.
 
 ![Vector Size](../imgs/vector_size.png)
 
+## Indexes Memory Size
+
 In-Memory Neighbor Graph Indexes are stored:
 - On-Disk
 - In-Memory
