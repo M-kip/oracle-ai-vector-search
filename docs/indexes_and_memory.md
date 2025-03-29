@@ -13,9 +13,12 @@ Oracle AI Vector Search supports two types of indexes:
 - **In-Memory Neighbor Graph Vector Index**
     - *Hierarchical Navigable Small World (HNSW)* is the only type supported
     - HNSW are very efficient for vector approximate similarity search.
+    - In a RAC environment you cannot create HNSW index.
 - **Neighbor Partition Vector Index**
     - *Inverted File Flat (IVF) Index* is the only type supported
     - They balances high search quality with reasonable speed
+
+**NOTE.** You can only create **one type of vector index per vector column.** 
 
 ## Vector Pool Area
 
