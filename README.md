@@ -8,7 +8,7 @@ Note-taking repository for Oracle AI Vector Search Professional exam (1Z0-184-25
 - [Oracle AI Vector Search Workflow](./docs/vector_search_workflow.md)
 - [Running Basic Queries on Vectors](./docs/queries_on_vectors.md)
 - [Vector Indexes and Memory](./docs/indexes_and_memory.md)
-
+- [DML Operations on Vectors](./docs/dml_operations.md)
 
 ## Oracle Database 23ai: Vector Search Deep Dive
 
