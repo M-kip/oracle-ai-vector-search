@@ -7,7 +7,7 @@ The ```vector``` data type definition includes:
 - dimension format (optional)
     - BYNARY
     - INT8
-    - FLOAT32
+    - FLOAT32 (default)
     - FLOAT64
 
 Declaration formats:
@@ -19,6 +19,10 @@ Declaration formats:
 - ```vector(*, dim_format)```
     - vectors can have an arbitrary number of dimensions
     - every vector will be converted to the specified format
+
+**NOTE**. If you are storing a mixed number of dimensions and formats, **you are not allowed to create vector indexes or to use distance functions** because they require the same number of dimensions as well as the same format for the entire column.
+
+A vector can be ```NULL``` but its dimensions cannot (for example, you cannot have a ```VECTOR``` with a ```NULL``` dimension such as ```[1.1, NULL, 2.2]```).
 
 ## Vector Data Type Example
 
