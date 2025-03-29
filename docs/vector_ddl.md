@@ -1,7 +1,7 @@
 # Vector DDL
 
 You can have tables with different vector formats:
-- more than one column of ```vector``` data type
+- more than one column of ```VECTOR``` data type
 - vector columns with different formats
 
 ## Example 
@@ -32,3 +32,23 @@ INSERT INTO t5 VALUES (
 
 COMMIT;
 ```
+
+## Prohibited Operations
+
+You cannot define ```VECTOR``` columns in/as:
+- External Tables
+- Index Organized Tables (IOTs) (neither as primary key nor as non-key column)
+- Clusters/Cluster Tables
+- Global Temp Tables
+- (Sub)Partitioning Key
+- Primary Key
+- Foreign Key
+- Unique Contrastraint
+- Check Constraints
+- Default Value
+- Modify Column
+- MSSM tablespace (only SYS user can craete VECTORs ad Basicfiles in MSSM tablespace)
+- Continuous Query Notification (CQN)
+- Non-vector indexes such as B-tree, Reverse Key, TExt, Spatial Indexes, etc.
+
+**Note.**  Oracle does not support ```distinct```, ```count distinct```, ```order by```, ```group by```, ```join``` condition, or comparison operators such as less than, greater than, or equal to with vector columns.
