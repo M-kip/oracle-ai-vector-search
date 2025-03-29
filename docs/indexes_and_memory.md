@@ -26,3 +26,32 @@ In order to be able to use vector indexes, you need to enable the Vector Pool Ar
 **Note.**    Large vector indexes do need lots of RAM and RAM constrains the vector index size. You should use IVF indexes when there is not enough RAM. IVF index is used both the buffer cache as well as disk.
 
 ![Vector Pool Area](../imgs/vector_pool_area.png)
+
+## Memory Considerations
+
+The size of a vector depends upon the embedding model that you use to create those embeddings. 
+
+Most popular vectors are between 1.5 and 12 KB in size.
+
+Oracle AI Vector Search supports:
+- INT8
+- FLOAT32
+- FLOAT64
+
+Oracle AI Vector Search supports vectors with up to 65,535 dimensions.
+
+*In this example, we're using the FLOAT32 format, which is 4 bytes in size. And so the size would be the number of dimensions multiplied by how many bytes for that format.*
+
+![Vector Size](../imgs/vector_size.png)
+
+In-Memory Neighbor Graph Indexes are stored:
+- On-Disk
+- In-Memory
+
+The In-Memory size formula is:
+
+    (1.3) * (size of vector format) * (# of dimensions) * (# of rows)
+
+*NOTE: 1.3 is an approximation for the overhead and graph layers*
+
+![In-Memory Indexes Size](../imgs/indexes_memory_size.png)
