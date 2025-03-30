@@ -10,6 +10,7 @@ Note-taking repository for Oracle AI Vector Search Professional exam (1Z0-184-25
 - [Vector Indexes and Memory](./docs/indexes_and_memory.md)
 - [DML Operations on Vectors](./docs/dml_operations.md)
 - [Vector DDL](./docs/vector_ddl.md)
+- [Finding the Nearest Vectors](./docs/finding_nearest_vectors.md)
 
 ## Oracle Database 23ai: Vector Search Deep Dive
 
