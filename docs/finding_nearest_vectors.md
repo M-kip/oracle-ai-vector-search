@@ -2,8 +2,6 @@
 
 The **Vector Constructor** is a function that allows us to create vectors without having to store those in a column in a table. You get to specify the vector values, but dimensions are optional, and the format is optional as well.
 
-Here some examples.
-
 ```
 SELECT VECTOR('[10, 2]');
 
@@ -19,6 +17,16 @@ The ```VECTOR_DISTANCE``` function can be used to perform a **similarity search*
 If a similarity search query does **not** specify a distance metric, then the default ```COSINE``` metric will be used for both exact and approximate searches.
 
 If a similarity search query does specify a distance metric, then an exact search with that distance metric is used if it conflicts with the distance metric specified in a vector index. If the two distance metrics are the same, then this will be used for both exact as well as approximate searches.
+
+```
+SELECT TO_NUMBER(
+    VECTOR_DISTANCE(
+        VECTOR('[0, 0]'),
+        VECTOR('[10, 0]'),
+        EUCLIDEAN
+    )
+) as EUCLIDEAN_DISTANCE;
+```
 
 ## Vector Distance Metrics
 
@@ -61,14 +69,6 @@ If a similarity search query does specify a distance metric, then an exact searc
 ## Examples
 
 ```
-SELECT TO_NUMBER(
-    VECTOR_DISTANCE(
-        VECTOR('[0, 0]'),
-        VECTOR('[10, 0]'),
-        EUCLIDEAN
-    )
-) as EUCLIDEAN_DISTANCE;
-
 SELECT TO_NUMBER(
     VECTOR('[0, 0]') <-> VECTOR('[10, 0]')
 ) as EUCLIDEAN_DISTANCE;
