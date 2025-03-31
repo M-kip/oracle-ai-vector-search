@@ -34,3 +34,48 @@ FROM vector_tab
 ORDER BY VECTOR_DISTANCE(embedding, :query_vector)
 FETCH FIRST 10 ROWS ONLY;
 ```
+
+## Approximate Similarity Search
+
+- Uses vector indexes
+    - Hiearchical Navigable Small World (HHSW) indexes
+    - Inverted File Flat (IVF) indexes
+- Fast and accurate
+- Can be more efficient
+- Can be less accurate
+- Uses target accuracy
+
+**Note**. In order to use vector indexes, you have to ensure that you have enabled the vector pool in the SGA.
+
+### Example: Hiearchical Navigable Small World (HHSW) indexes
+
+```
+CREATE VECTOR INDEX galaxies_hnsw_idx ON galaxies (embedding)
+    ORGANIZATION INMEMORY NEIGHBOR GRAPH 
+    DISTANCE COSINE WITH TARGET ACCURACY 95;
+
+SELECT name
+FROM galaxies
+WHERE name <> 'NGC1073'
+ORDER BY VECTOR_DISTANCE (embedding, to_vector('[0,1,1,0,0]', COSINE)
+FECTH APPROXIMATE FIRST 3 ROWS ONLY;
+```
+### Example: Inverted File Flat (IVF) indexes
+
+```
+CREATE VECTOR INDEX galaxies_ivf_idx ON galaxies (embedding)
+    ORGANIZATION NEIGHBOR PARTITIONS 
+    DISTANCE COSINE WITH TARGET ACCURACY 95;
+
+SELECT name
+FROM galaxies
+WHERE name <> 'NGC1073'
+ORDER BY VECTOR_DISTANCE (embedding, to_vector('[0,1,1,0,0]', COSINE)
+FECTH APPROXIMATE FIRST 3 ROWS ONLY;
+```
+
+## Approximate Similarity Search vs Exact Similarity Search
+
+In this example, the approximate search finds four of the five closest neighbors. In this case, the search accuracy is 80%. So you see that there is a **trade off between speed and accuracy** when using approximate similarity search.
+
+![Approximate Vs Exact](../imgs/approximate_vs_exact.png)
