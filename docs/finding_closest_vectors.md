@@ -79,3 +79,44 @@ FECTH APPROXIMATE FIRST 3 ROWS ONLY;
 In this example, the approximate search finds four of the five closest neighbors. In this case, the search accuracy is 80%. So you see that there is a **trade off between speed and accuracy** when using approximate similarity search.
 
 ![Approximate Vs Exact](../imgs/approximate_vs_exact.png)
+
+## Multi-Vector Similarity Search
+
+- Usually for multi-document search
+- Documents are split into chunks
+- Chunks embedded individually into vectors
+- Uses partitions
+
+A multi-vector search consists of retrieving the top k vector matches, using the partitions based on the document's characteristics. The ability to score documents based on the similarity of their chunks to a query vector being searched is facilitated in SQL using the **partitioned row-limiting clause** (*). If we don't meet these three criteria, then **the record will be filtered out**. Multi-vector search with the partitioning row limit clause **does not use vector indexes**.
+
+(*) The partition row-limiting clause extension is a generic extension of the SQL language.
+
+### Example
+
+*What are the four best matching sentences found in the three best matching paragraphs of the two best matching books?*
+
+#### Using Exact Similarity Search
+
+```
+SELECT bookId, paragraphId, sentence
+FROM books
+ORDER BY VECTOR_DISTANCE (embedding, :query_vector)
+FECTH FIRST 2 PARTITIONS BY bookId, 
+            3 PARTITIONS BY paragraphId,
+            4 ROWS ONLY;
+```
+
+#### Using Approximate Search
+
+```
+SELECT bookId, paragraphId, sentence
+FROM books
+ORDER BY VECTOR_DISTANCE (embedding, :query_vector)
+FECTH APPROXIMATE FIRST 2 PARTITIONS BY bookId, 
+                        3 PARTITIONS BY paragraphId,
+                        4 ROWS ONLY
+                        WITH TARGET ACCURACY 90;
+```
+
+
+
