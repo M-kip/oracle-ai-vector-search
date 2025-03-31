@@ -106,7 +106,7 @@ FECTH FIRST 2 PARTITIONS BY bookId,
             4 ROWS ONLY;
 ```
 
-#### Using Approximate Search
+#### Using Approximate Similarity Search
 
 ```
 SELECT bookId, paragraphId, sentence
