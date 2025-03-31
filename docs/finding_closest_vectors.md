@@ -13,3 +13,24 @@ The **similarity search** allows you to calculate the query vector distance to a
 
 ![Exact Similarity Search](../imgs/exact_similarity_search.png)
 
+### Euclidean Similarity Search
+
+In this example, ```docID``` and ```embedding``` are columns that are defined in the ```vector_tab``` table. The embedding column has the data type of vector.
+
+```
+SELECT docID
+FROM vector_tab
+ORDER BY VECTOR_DISTANCE(embedding, :query_vector, EUCLIDEAN)
+FETCH EXACT FIRST 10 ROWS ONLY;
+```
+
+### Euclidean Squared Similarity Search
+
+In the case of Euclidean distances, comparing squared distances is equivalent to comparing distances. So when ordering is more important than the distance values themselves, the Euclidean squared distance is very useful, as it is faster to calculate than the Euclidean distance, avoiding the square-root calculation.
+
+```
+SELECT docID
+FROM vector_tab
+ORDER BY VECTOR_DISTANCE(embedding, :query_vector)
+FETCH FIRST 10 ROWS ONLY;
+```
