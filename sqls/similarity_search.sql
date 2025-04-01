@@ -16,12 +16,17 @@ insert into t6 values
     
 commit;
 
+-- exact similarity search
 select id, v
 from t6
 order by vector_distance(v, to_vector('[1.1, 2.7, 7.1415922653589793238]'), cosine)
 fetch first 5 rows only;
 
+-- approximate similary search
+create vector index t6_hnsw_idx on t6 (v) 
+organization inmemory neighbor graph distance cosine with target accuracy 95; 
+
 select id, v
 from t6
-order by vector_distance(v, to_vector('[1.1, 2.7, 7.1415922653589793238]'), manhattan)
-fetch first 5 rows only;
+order by vector_distance(v, to_vector('[1.1, 2.7, 7.1415922653589793238]'), cosine)
+fetch approximate first 5 rows only;
