@@ -12,5 +12,5 @@ commit;
 
 select id
 from t7
-order by vector_distance(to_vector('[7, 0]'), v, euclidean)
+order by vector_distance(to_vector('[5, 5]'), v, euclidean)
 fetch first 3 rows only;
