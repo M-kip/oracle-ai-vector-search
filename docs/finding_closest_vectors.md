@@ -118,5 +118,26 @@ FECTH APPROXIMATE FIRST 2 PARTITIONS BY bookId,
                         WITH TARGET ACCURACY 90;
 ```
 
+## Finding the Closest Vectors to a Given Vector
 
+```
+CREATE TABLE IF NOT EXISTS t7 (
+    id   NUMBER PRIMARY KEY , 
+    v    VECTOR(2, FLOAT32)
+); 
+
+INSERT INTO t7  
+     VALUES (1, '[3, 3]'), (2, '[5, 3]'), (3, '[7, 3]'), 
+            (4, '[3, 5]'), (5, '[5, 5]'), (6, '[7, 5]'), 
+            (7, '[3, 7]'), (8, '[5, 7]'), (9, '[7, 7]');  
+            
+COMMIT;
+
+SELECT id
+FROM t7
+ORDER BY VECTOR_DISTANCE(TO_VECTOR('[5, 0]'), v, EUCLIDEAN)
+FETCH FIRST 3 ROWS ONLY;
+```
+
+![Finding the Closest Vectors to a Given Vector](../imgs/closest_vector_1.png)
 
