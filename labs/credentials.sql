@@ -1,9 +1,9 @@
---BEGIN
---    DBMS_CLOUD.DROP_CREDENTIAL(
---      CREDENTIAL_NAME => 'GEMINI_AI'
---    );
---END;
---/
+BEGIN
+    DBMS_CLOUD.DROP_CREDENTIAL(
+      CREDENTIAL_NAME => 'OPENAI'
+    );
+END;
+/
 
 BEGIN
     DBMS_CLOUD.CREATE_CREDENTIAL(
@@ -18,10 +18,10 @@ DECLARE
     JO JSON_OBJECT_T;
 BEGIN
     JO := JSON_OBJECT_T();
-    JO.PUT('access_token', 'your_GOOGLE_token');
+    JO.PUT('access_token', 'openai-token');
     
     DBMS_VECTOR_CHAIN.CREATE_CREDENTIAL(
-        CREDENTIAL_NAME => 'GEMINI_AI',
+        CREDENTIAL_NAME => 'OPENAI',
         PARAMS => JSON(JO.TO_STRING)
     );
 END;
