@@ -8,7 +8,7 @@ When working with vectors, you are not limited to the use of the ```ORDER BY``` 
 SELECT id, v, shape_color
 FROM t3
 WHERE shape_color = 'Red'
-ORDER BY VECTOR_DISTANCE(v, TO_VECTOR('[1.1, 2.7. 7.141592653589793238]'))
+ORDER BY VECTOR_DISTANCE(v, TO_VECTOR('[1.1, 2.7]'))
 FETCH FIRST 5 ROWS ONLY
 ```
 
