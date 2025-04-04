@@ -1,8 +1,0 @@
-select dbms_vector_chain.utl_to_generate_text(
-    'What is Oracle?',
-    json('{
-"provider": "openai",
-"credential_name": "OPENAI",
-"url": "https://api.openai.com/v1/chat/completions",
-"model": "gpt-3.5-turbo"
-}')) from dual;

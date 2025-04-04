@@ -28,7 +28,6 @@ a method of selection as anything else.."},
         "credential_name": "OPENAI",
         "url": "https://api.openai.com/v1/chat/completions",
         "model": "gpt-4o-mini",
-        "max_tokes": 4000,
         "temperature": 1.0
     }';    
     
