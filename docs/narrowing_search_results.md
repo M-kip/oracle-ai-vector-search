@@ -11,4 +11,5 @@ WHERE shape_color = 'Red'
 ORDER BY VECTOR_DISTANCE(v, TO_VECTOR('[6, 8]'))
 FETCH FIRST 5 ROWS ONLY
 ```
+
 ![Attribute Filtering](../imgs/attribute_filtering.png)
