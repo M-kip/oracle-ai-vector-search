@@ -18,3 +18,12 @@
 Select AI **translates natural language into Oracle SQL language** using an LLM.
 
 ![Select AI](../imgs/select_ai.png)
+
+## Examples
+
+```
+SELECT DMS_CLOUD_AI.GENERATE(
+    profile_name => 'COHERE',
+    action       => 'chat',
+    prompt       => 'What is Oracle Autonomous DB?')
+```
