@@ -22,6 +22,36 @@ Select AI **translates natural language into Oracle SQL language** using an LLM.
 ## Examples
 
 ```
+begin
+    -- Drop the AI profile (if already exists)
+    DBMS_CLOUD_API.DROP_PROFILE(
+        profile_name => 'COHERE',
+        force        => true
+    );
+
+    -- Specify the LLM provider, your credential and the table/views used for queries
+    -- NOTE: omit the table from the list to include all objects in the schema
+    DBMS_CLOUD_AI.CREATE_PROFILE(
+        profile_name => 'COHERE',
+        attributes => '{
+            "provider": "OCI",
+            "credential_name": "OCI$RESOURCE_PRINCIPAL",
+            "object_list": [
+                {"owher": "MOVIESTREAM", "name": "movies"},
+                {"owher": "MOVIESTREAM", "name": "streams"},
+                {"owher": "MOVIESTREAM", "name": "actors"}
+            ],
+            "region": "eu-milan-1"
+        }'     
+    )
+
+    -- Set the AI profile for this session
+    DBS_CLOUD_AI.SET_PROFILE(
+        profile_name => 'COHERE'
+    )
+end;
+
+
 SELECT DMS_CLOUD_AI.GENERATE(
     profile_name => 'COHERE',
     action       => 'chat',
