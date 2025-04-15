@@ -19,23 +19,28 @@ Select AI **translates natural language into Oracle SQL language** using an LLM.
 
 ![Select AI](../imgs/select_ai.png)
 
-## Examples
+## Sample code
+
+Drop the AI profile (if already exists).
 
 ```
 begin
-    -- Drop the AI profile (if already exists)
     DBMS_CLOUD_API.DROP_PROFILE(
-        profile_name => 'COHERE',
+        profile_name => 'GENAI',
         force        => true
     );
+end;
+```
 
-    -- Specify the LLM provider, your credential and the table/views used for queries
-    -- NOTE: omit the table from the list to include all objects in the schema
+Create the AI profile.
+
+```
+begin
     DBMS_CLOUD_AI.CREATE_PROFILE(
-        profile_name => 'COHERE',
+        profile_name => 'GENAI',
         attributes => '{
             "provider": "OCI",
-            "credential_name": "OCI$RESOURCE_PRINCIPAL",
+            "credential_name": "OCI_CRED",
             "object_list": [
                 {"owher": "MOVIESTREAM", "name": "movies"},
                 {"owher": "MOVIESTREAM", "name": "streams"},
@@ -43,17 +48,23 @@ begin
             ],
             "region": "eu-milan-1"
         }'     
-    )
-
-    -- Set the AI profile for this session
-    DBS_CLOUD_AI.SET_PROFILE(
-        profile_name => 'COHERE'
-    )
+    );
 end;
+```
 
+Set the AI profile for this session.
 
-SELECT DMS_CLOUD_AI.GENERATE(
-    profile_name => 'COHERE',
+```
+begin
+    DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'GENAI')
+end;
+```
+
+Ask your question.
+
+```
+SELECT DBMS_CLOUD_AI.GENERATE(
+    profile_name => 'GENAI',
     action       => 'chat',
     prompt       => 'What is Oracle Autonomous DB?')
 ```
