@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS t7 (
     ID   NUMBER PRIMARY KEY , 
-    V    vector(2, float32)
+    V    vector(2, float32) -- create a vector with 2 dimensions of the type float 32bytes
 ); 
 
 INSERT INTO t7  
