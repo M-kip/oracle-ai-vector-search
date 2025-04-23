@@ -8,9 +8,9 @@ import oracledb
 from sentence_transformers import SentenceTransformer
 from sentence_transformers import CrossEncoder
 
-un = "moses"
-cs = "localhost/orclcdb"
-pw = "mbuyuni2025" #getpass.getpass(f'Enter password for {un}@{cs}: ')
+un = "c##moses"
+cs = "localhost/free"
+pw = "mbuyuni_2025" #getpass.getpass(f'Enter password for {un}@{cs}: ')
 
 
 embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
@@ -20,7 +20,7 @@ topK = 5
 
 #  Re-racking is about potentially improving the order of the result
 # Re-racking is significantly slower than doinga similarity search
-rerank = 0
+rerank = False
 
 sql = """select info 
          from my_data
@@ -42,7 +42,7 @@ model = SentenceTransformer(embedding_model, trust_remote_code=False)
 print("connecting to the database...............................")
 with oracledb.connect(user=un, password=pw, dsn=cs) as connection:
 
-    db_version = tuple(int(s) for s in connection.db_version.split("."))[:2]
+    db_version = tuple(int(s) for s in connection.version.split("."))[:2]
     if db_version < (23, 4):
         sys.exit("This example only works for oracle db 23.4 or later")
     print("connected to the database...............................")
@@ -86,7 +86,7 @@ with oracledb.connect(user=un, password=pw, dsn=cs) as connection:
                     cross.append(tup)
             print(f'Similarity Search took {toc - tic:0.4f} seconds')
 
-            if rerank:
+            if not rerank:
                 # Just rely on the vector distance for thr result order
                 print("\nWithout Re-Ranking")
                 print("=====================================")
