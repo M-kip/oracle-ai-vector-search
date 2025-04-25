@@ -1,0 +1,7 @@
+google-genai==1.7.0
+transformers
+sentence-transformers
+google-generativeai
+httpx
+google-api-core
+
