@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS C##MOSES.vector_store (
         FOREIGN KEY (DOC_ID) REFERENCES
         my_books(id)
 );
+
+--Set up an Oracle Database Table: First, create a table in Oracle to store the model data.
+CREATE TABLE IF NOT EXISTS onnx_models (
+    model_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    model_name VARCHAR2(255),
+    model_data BLOB
+);

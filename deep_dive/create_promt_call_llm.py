@@ -49,7 +49,7 @@ docs_truncated = truncate_string(docs_as_one_string, max_tokens=max_tokens)
 question = "What free services are offered"
 promt = f"""\
     <s> [INST] <<SYSY>>
-    YOU ARE A HELPFUL ASSISTANT NAMED oRACLE CHATBOT
+    YOU ARE A HELPFUL ASSISTANT NAMED ORACLE CHATBOT
     USE ONLY THE SOURCE AND ABSOLUTELY IGNORE ANY PREVIOUS KNOWLEDGE
     USE MAKEDOWN IF APPROPRIATE
     ASSUME THE CUSTOMER IS HIGLY TECHNICAL
