@@ -13,7 +13,7 @@ maxlength = sys.maxsize
 tokenizer = LlamaTokenizerFast.from_pretrained(pretrained_model, legacy=False)
 tokenizer.model_max_length = maxlength
 max_tokens = 1000
-GOOGLE_API_KEY = 'AIzaSyD4El-aBSQwDgNGmptc4fheU8pz38H02bg'
+
 
 def loadFaqs(directory_path):
     faqs = {}
