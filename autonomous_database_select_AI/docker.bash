@@ -5,8 +5,8 @@ docker run -d \
 -p 8443:8443 \
 -p 27017:27017 \
 -e WORKLOAD_TYPE='ATP' \
--e WALLET_PASSWORD='Mbuyuni@2025Mwishowalami' \
--e ADMIN_PASSWORD='Mbuyuni@2025Mwishowalami' \
+-e WALLET_PASSWORD='' \
+-e ADMIN_PASSWORD='' \
 --cap-add SYS_ADMIN \
 --device /dev/fuse \
 --name adb-free \
